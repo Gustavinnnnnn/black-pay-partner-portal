@@ -100,7 +100,7 @@ export function ApplicationWizard({ initialModality, onExit }: { initialModality
             onChange={(a) => setAnswersBy((prev) => ({ ...prev, [modality]: a }))} />
         ) : (
           <StepReview modality={modality} personal={personal} answers={answersBy[modality]} consent={consent}
-            onConsent={(v) => { setConsent(v); setErrors({}); }} consentError={errors.consent} goTo={go} />
+            onConsent={(v) => { setConsent(v); setErrors({}); }} consentError={errors["consent"]} goTo={go} />
         )}
 
         <div className="mt-10 flex flex-col-reverse gap-3 sm:flex-row sm:justify-between">

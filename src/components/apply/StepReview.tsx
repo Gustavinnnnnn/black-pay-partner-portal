@@ -10,7 +10,7 @@ interface Props {
   answers: Record<string, string>;
   consent: boolean;
   onConsent: (v: boolean) => void;
-  consentError?: string;
+  consentError?: string | undefined;
   goTo: (step: number) => void;
 }
 

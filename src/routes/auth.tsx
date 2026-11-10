@@ -82,11 +82,11 @@ function AuthPage() {
           </p>
         ) : (
           <form onSubmit={onSubmit} className="mt-6 space-y-5" noValidate>
-            <Field id="email" label="E-mail" required error={errors.email}>
-              <input id="email" type="email" autoComplete="email" className={inputClass(!!errors.email)} value={email} onChange={(e) => setEmail(e.target.value)} />
+            <Field id="email" label="E-mail" required error={errors["email"]}>
+              <input id="email" type="email" autoComplete="email" className={inputClass(!!errors["email"])} value={email} onChange={(e) => setEmail(e.target.value)} />
             </Field>
-            <Field id="password" label="Senha" required error={errors.password}>
-              <input id="password" type="password" autoComplete={mode === "signin" ? "current-password" : "new-password"} className={inputClass(!!errors.password)} value={password} onChange={(e) => setPassword(e.target.value)} />
+            <Field id="password" label="Senha" required error={errors["password"]}>
+              <input id="password" type="password" autoComplete={mode === "signin" ? "current-password" : "new-password"} className={inputClass(!!errors["password"])} value={password} onChange={(e) => setPassword(e.target.value)} />
             </Field>
             <Button type="submit" variant="hero" size="xl" className="w-full" disabled={loading}>
               {loading ? <Loader2 className="animate-spin" aria-hidden="true" /> : null}

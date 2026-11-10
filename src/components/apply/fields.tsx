@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 /** Labeled field wrapper with required marker and error message. */
 export function Field({
   id, label, required, error, hint, children,
-}: { id: string; label: string; required?: boolean; error?: string; hint?: string; children: ReactNode }) {
+}: { id: string; label: string; required?: boolean | undefined; error?: string | undefined; hint?: string | undefined; children: ReactNode }) {
   return (
     <div className="space-y-2">
       <label htmlFor={id} className="block text-sm font-semibold text-foreground">

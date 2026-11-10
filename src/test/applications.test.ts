@@ -16,12 +16,12 @@ describe("application rules", () => {
   });
   it("investor must acknowledge risk", () => {
     const base = { valor: INVEST_RANGES[0], experiencia: "Sim", objetivo: "Participar do crescimento" };
-    expect(validateAnswers("investidor", { ...base, ciente_riscos: "Não" }).ciente_riscos).toBeDefined();
+    expect(validateAnswers("investidor", { ...base, ciente_riscos: "Não" })["ciente_riscos"]).toBeDefined();
     expect(validateAnswers("investidor", { ...base, ciente_riscos: "Sim, estou ciente dos riscos" })).toEqual({});
   });
   it("investor value must be one of the five ranges", () => {
     expect(INVEST_RANGES).toHaveLength(5);
-    expect(validateAnswers("investidor", { valor: "R$ 1.000" }).valor).toBe("Selecione uma opção válida");
+    expect(validateAnswers("investidor", { valor: "R$ 1.000" })["valor"]).toBe("Selecione uma opção válida");
   });
   it("CSV export neutralizes formulas", () => {
     expect(csvCell("=HYPERLINK()")).toBe("'=HYPERLINK()");
