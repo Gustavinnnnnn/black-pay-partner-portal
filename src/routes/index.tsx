@@ -11,9 +11,9 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Faça parte da Black Pay — Candidaturas oficiais" },
-      { name: "description", content: "Candidate-se para Sócio de Expansão ou Sócio Investidor e participe do crescimento da Black Pay, gateway de pagamentos." },
+      { name: "description", content: "Candidate-se para Sócio de Divulgação e Expansão ou para a Equipe de Suporte e participe do crescimento da Black Pay, gateway de pagamentos." },
       { property: "og:title", content: "Faça parte da Black Pay" },
-      { property: "og:description", content: "Portal oficial de candidaturas: Sócio de Expansão e Sócio Investidor." },
+      { property: "og:description", content: "Portal oficial de candidaturas: Sócio de Divulgação e Expansão e Equipe de Suporte." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],

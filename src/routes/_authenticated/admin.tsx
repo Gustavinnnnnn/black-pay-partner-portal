@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { BrandMark } from "@/components/apply/Brand";
 import { inputClass } from "@/components/apply/fields";
-import { MODALITIES, MODALITY_LABEL, QUESTIONS, STATUSES, STATUS_LABEL, type Modality, type Status } from "@/lib/applications";
+import { MODALITIES, MODALITY_LABEL, OPEN_MODALITIES, QUESTIONS, STATUSES, STATUS_LABEL, type Modality, type Status } from "@/lib/applications";
 import { downloadCsv, toCsv } from "@/lib/csv";
 import { StatsGrid } from "@/components/admin/StatsGrid";
 import { StatusBadge } from "@/components/admin/StatusBadge";
@@ -131,7 +131,7 @@ function AdminPage() {
               </div>
               <select aria-label="Modalidade" className={selectCls} value={modality} onChange={(e) => setModality(e.target.value as Modality | "all")}>
                 <option value="all">Todas as modalidades</option>
-                {MODALITIES.map((m) => <option key={m} value={m}>{MODALITY_LABEL[m]}</option>)}
+                {OPEN_MODALITIES.map((m) => <option key={m} value={m}>{MODALITY_LABEL[m]}</option>)}
               </select>
               <select aria-label="Status" className={selectCls} value={status} onChange={(e) => setStatus(e.target.value as Status | "all")}>
                 <option value="all">Todos os status</option>
