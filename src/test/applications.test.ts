@@ -28,6 +28,10 @@ describe("application rules", () => {
     expect(validateAnswers("expansao", { investimento: "Não" })["investimento"]).toBeDefined();
     expect(validateAnswers("expansao", { investimento: ENTRY_OK })["investimento"]).toBeUndefined();
   });
+  it("only expansion and support are open to the public", () => {
+    expect(OPEN_MODALITIES).toEqual(["expansao", "suporte"]);
+    expect(OPEN_MODALITIES.includes("investidor")).toBe(false);
+  });
   it("wa.me link adds Brazil code", () => {
     expect(whatsappLink("11912345678")).toBe("https://wa.me/5511912345678");
   });
