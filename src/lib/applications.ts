@@ -21,7 +21,7 @@ export const STATUS_LABEL: Record<Status, string> = {
 export const MODALITY_LABEL: Record<Modality, string> = {
   suporte: "Suporte",
   investidor: "Sócio investidor",
-  expansao: "Sócio de expansão",
+  expansao: "Gerente da plataforma",
 };
 
 export type QuestionType = "text" | "textarea" | "select";
