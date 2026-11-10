@@ -14,5 +14,8 @@ export const STATUS_STYLE: Record<Status, string> = {
 export const formatPhone = (d: string) =>
   d.length === 11 ? `(${d.slice(0, 2)}) ${d.slice(2, 7)}-${d.slice(7)}` : d.length === 10 ? `(${d.slice(0, 2)}) ${d.slice(2, 6)}-${d.slice(6)}` : d;
 
+/** Opens a WhatsApp chat; numbers without country code get Brazil's 55. */
+export const whatsappLink = (d: string) => `https://wa.me/${d.length <= 11 ? `55${d}` : d}`;
+
 export const formatDate = (iso: string) =>
   new Date(iso).toLocaleString("pt-BR", { day: "2-digit", month: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit" });

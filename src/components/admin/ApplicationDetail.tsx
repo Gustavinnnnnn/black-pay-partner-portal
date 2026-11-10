@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { Check, Copy, Loader2, Search, Trash2, X, Handshake } from "lucide-react";
+import { Check, Copy, Loader2, Search, Trash2, X, Handshake, MessageCircle } from "lucide-react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription } from "@/components/ui/sheet";
@@ -12,7 +12,7 @@ import { Button } from "@/components/ui/button";
 import { MODALITY_LABEL, QUESTIONS, STATUS_LABEL, type Modality, type Status } from "@/lib/applications";
 import { inputClass } from "@/components/apply/fields";
 import { StatusBadge } from "./StatusBadge";
-import { formatDate, formatPhone, type ApplicationRow } from "./types";
+import { formatDate, formatPhone, whatsappLink, type ApplicationRow } from "./types";
 
 export function ApplicationDetail({ app, onClose }: { app: ApplicationRow | null; onClose: () => void }) {
   const qc = useQueryClient();
@@ -77,7 +77,10 @@ export function ApplicationDetail({ app, onClose }: { app: ApplicationRow | null
               ))}
               <div className="flex items-center justify-between py-3">
                 <div><dt className="text-xs uppercase tracking-wider text-muted-foreground">WhatsApp</dt><dd className="mt-1 text-sm">{formatPhone(app.whatsapp)}</dd></div>
-                <Button variant="ghost" size="sm" onClick={() => { navigator.clipboard.writeText(app.whatsapp); toast.success("WhatsApp copiado."); }}><Copy aria-hidden="true" />Copiar</Button>
+                <div className="flex gap-1">
+                  <Button variant="hero" size="sm" asChild><a href={whatsappLink(app.whatsapp)} target="_blank" rel="noopener noreferrer"><MessageCircle aria-hidden="true" />Chamar</a></Button>
+                  <Button variant="ghost" size="sm" aria-label="Copiar WhatsApp" onClick={() => { navigator.clipboard.writeText(app.whatsapp); toast.success("WhatsApp copiado."); }}><Copy aria-hidden="true" /></Button>
+                </div>
               </div>
             </dl>
 

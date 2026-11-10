@@ -153,7 +153,10 @@ function AdminPage() {
                       className="cursor-pointer border-b border-border transition-colors last:border-0 hover:bg-accent/40 focus-visible:bg-accent/40 focus-visible:outline-none">
                       <td className="px-4 py-3 font-semibold">{r.full_name}</td>
                       <td className="px-4 py-3 text-muted-foreground">{MODALITY_LABEL[r.modality as Modality]}</td>
-                      <td className="px-4 py-3 text-muted-foreground">{formatPhone(r.whatsapp)}</td>
+                      <td className="px-4 py-3">
+                        <a href={whatsappLink(r.whatsapp)} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}
+                          className="font-semibold text-primary underline-offset-4 hover:underline">{formatPhone(r.whatsapp)}</a>
+                      </td>
                       <td className="px-4 py-3 text-muted-foreground">{r.city_state}</td>
                       <td className="px-4 py-3 text-muted-foreground">{formatDate(r.created_at)}</td>
                       <td className="px-4 py-3"><StatusBadge status={r.status} /></td>
