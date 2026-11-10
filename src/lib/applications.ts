@@ -4,8 +4,8 @@ import { z } from "zod";
 
 export const MODALITIES = ["suporte", "investidor", "expansao"] as const;
 export type Modality = (typeof MODALITIES)[number];
-/** Modalities currently open to the public, in display order. Suporte is paused. */
-export const OPEN_MODALITIES: readonly Modality[] = ["expansao", "investidor"];
+/** Modalities currently open to the public, in display order. */
+export const OPEN_MODALITIES: readonly Modality[] = ["expansao", "suporte", "investidor"];
 
 export const STATUSES = ["nova", "em_analise", "em_negociacao", "aprovada", "recusada"] as const;
 export type Status = (typeof STATUSES)[number];
@@ -59,7 +59,7 @@ export const QUESTIONS: Record<Modality, readonly Question[]> = {
     { id: "sobre", label: "Conte um pouco sobre você e sua experiência.", type: "textarea", required: true },
   ],
   investidor: [
-    { id: "valor", label: "Quanto pretende investir? (valor a combinar)", type: "text", required: true, placeholder: "Ex.: R$ 10.000 ou \"quero conversar\"" },
+    { id: "valor", label: "Quanto pretende investir? (mínimo de R$ 5.000)", type: "select", options: INVEST_RANGES, required: true },
     { id: "experiencia", label: "Você possui experiência com investimentos ou negócios digitais?", type: "select", options: YES_NO, required: true },
     { id: "objetivo", label: "Qual é seu principal objetivo ao entrar na Black Pay?", type: "textarea", required: true },
     {
