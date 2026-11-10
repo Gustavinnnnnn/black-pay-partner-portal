@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { maskWhatsapp, personalSchema, validateAnswers, ENTRY_OK } from "@/lib/applications";
+import { maskWhatsapp, personalSchema, validateAnswers, ENTRY_OK, OPEN_MODALITIES } from "@/lib/applications";
 import { whatsappLink } from "@/components/admin/types";
 import { csvCell } from "@/lib/csv";
 
@@ -27,6 +27,10 @@ describe("application rules", () => {
   it("expansion applicant must accept the R$ 2.000 entry", () => {
     expect(validateAnswers("expansao", { investimento: "Não" })["investimento"]).toBeDefined();
     expect(validateAnswers("expansao", { investimento: ENTRY_OK })["investimento"]).toBeUndefined();
+  });
+  it("only expansion and support are open to the public", () => {
+    expect(OPEN_MODALITIES).toEqual(["expansao", "suporte"]);
+    expect(OPEN_MODALITIES.includes("investidor")).toBe(false);
   });
   it("wa.me link adds Brazil code", () => {
     expect(whatsappLink("11912345678")).toBe("https://wa.me/5511912345678");

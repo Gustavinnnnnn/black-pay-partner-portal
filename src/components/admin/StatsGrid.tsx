@@ -1,12 +1,11 @@
+import { MODALITY_LABEL, OPEN_MODALITIES, type Modality } from "@/lib/applications";
 import type { ApplicationRow } from "./types";
 
 export function StatsGrid({ rows }: { rows: ApplicationRow[] }) {
   const count = (fn: (r: ApplicationRow) => boolean) => rows.filter(fn).length;
   const stats: [string, number, boolean?][] = [
     ["Total", rows.length, true],
-    ["Suporte", count((r) => r.modality === "suporte")],
-    ["Investidores", count((r) => r.modality === "investidor")],
-    ["Expansão", count((r) => r.modality === "expansao")],
+    ...OPEN_MODALITIES.map((m) => [MODALITY_LABEL[m], count((r) => r.modality === m)] as [string, number]),
     ["Pendentes", count((r) => ["nova", "em_analise", "em_negociacao"].includes(r.status))],
     ["Aprovadas", count((r) => r.status === "aprovada")],
     ["Recusadas", count((r) => r.status === "recusada")],
