@@ -45,6 +45,7 @@ export const INVEST_RANGES = [
   "Acima de R$ 50.000",
 ] as const;
 const RISK_OK = "Sim, estou ciente dos riscos";
+export const ENTRY_OK = "Sim, estou ciente e de acordo";
 
 export const QUESTIONS: Record<Modality, readonly Question[]> = {
   suporte: [
@@ -56,7 +57,7 @@ export const QUESTIONS: Record<Modality, readonly Question[]> = {
     { id: "sobre", label: "Conte um pouco sobre você e sua experiência.", type: "textarea", required: true },
   ],
   investidor: [
-    { id: "valor", label: "Qual valor pretende investir?", type: "select", options: INVEST_RANGES, required: true },
+    { id: "valor", label: "Quanto pretende investir? (valor a combinar)", type: "text", required: true, placeholder: "Ex.: R$ 10.000 ou \"quero conversar\"" },
     { id: "experiencia", label: "Você possui experiência com investimentos ou negócios digitais?", type: "select", options: YES_NO, required: true },
     { id: "objetivo", label: "Qual é seu principal objetivo ao entrar na Black Pay?", type: "textarea", required: true },
     {
@@ -75,7 +76,14 @@ export const QUESTIONS: Record<Modality, readonly Question[]> = {
     { id: "marketing", label: "Já trabalhou com divulgação ou marketing?", type: "select", options: YES_NO, required: true },
     { id: "redes", label: "Tem experiência com Instagram, TikTok ou outras redes sociais?", type: "select", options: YES_NO, required: true },
     { id: "horas", label: "Quantas horas por dia pode dedicar?", type: "select", options: HOURS, required: true },
-    { id: "investimento", label: "Quanto pretende investir para entrar na operação?", type: "text", required: true, placeholder: "Ex.: R$ 3.000" },
+    {
+      id: "investimento",
+      label: "Está ciente de que a entrada custa R$ 2.000 (valor fixo)?",
+      type: "select",
+      options: [ENTRY_OK, "Não"],
+      mustEqual: ENTRY_OK,
+      required: true,
+    },
     { id: "capacidade", label: "Você tem capacidade de organizar e administrar uma comunidade?", type: "select", options: YES_NO, required: true },
     { id: "como_crescer", label: "Como pretende ajudar a Black Pay a crescer?", type: "textarea", required: true },
     { id: "por_que", label: "Por que deveríamos escolher você?", type: "textarea", required: true },
