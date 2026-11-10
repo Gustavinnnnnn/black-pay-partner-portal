@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { maskWhatsapp, personalSchema, validateAnswers, ENTRY_OK } from "@/lib/applications";
+import { maskWhatsapp, personalSchema, validateAnswers, ENTRY_OK, OPEN_MODALITIES } from "@/lib/applications";
 import { whatsappLink } from "@/components/admin/types";
 import { csvCell } from "@/lib/csv";
 
