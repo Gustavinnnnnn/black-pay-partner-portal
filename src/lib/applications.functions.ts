@@ -10,6 +10,7 @@ import { QUESTIONS, submissionSchema, validateAnswers } from "./applications";
 export const submitApplication = createServerFn({ method: "POST" })
   .inputValidator((input: unknown) => submissionSchema.parse(input))
   .handler(async ({ data }) => {
+    if (!OPEN_MODALITIES.includes(data.modality)) throw new Error("Esta modalidade não está aberta no momento.");
     const errors = validateAnswers(data.modality, data.answers);
     if (Object.keys(errors).length) throw new Error("Respostas inválidas. Revise o formulário.");
 

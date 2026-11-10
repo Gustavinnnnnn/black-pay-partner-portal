@@ -4,7 +4,7 @@ import { useMutation } from "@tanstack/react-query";
 import { ArrowLeft, ArrowRight, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
-import { MODALITIES, personalSchema, validateAnswers, type Modality } from "@/lib/applications";
+import { OPEN_MODALITIES, personalSchema, validateAnswers, type Modality } from "@/lib/applications";
 import { submitApplication } from "@/lib/applications.functions";
 import { MODALITY_CONTENT } from "./content";
 import { OpportunityCard } from "./OpportunityCard";
@@ -87,8 +87,8 @@ export function ApplicationWizard({ initialModality, onExit }: { initialModality
         </p>
 
         {step === 1 ? (
-          <div className="grid gap-4 md:grid-cols-3">
-            {MODALITIES.map((m, i) => (
+          <div className="grid gap-4 md:grid-cols-2">
+            {OPEN_MODALITIES.map((m, i) => (
               <OpportunityCard key={m} index={i} content={MODALITY_CONTENT[m]} selected={m === modality}
                 onSelect={() => { setModality(m); go(2); }} />
             ))}
