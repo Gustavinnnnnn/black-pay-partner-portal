@@ -60,7 +60,7 @@ export const MODALITY_CONTENT: Record<Modality, ModalityContent> = {
   },
   expansao: {
     id: "expansao",
-    number: "03",
+    number: "01",
     title: "Sócio de divulgação e expansão",
     tag: "Entrada de R$ 2.000",
     summary: "Para quem quer participar ativamente do crescimento: comunidades, divulgação, redes sociais e captação de sellers.",

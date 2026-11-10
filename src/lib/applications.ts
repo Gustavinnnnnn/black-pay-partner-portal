@@ -4,6 +4,8 @@ import { z } from "zod";
 
 export const MODALITIES = ["suporte", "investidor", "expansao"] as const;
 export type Modality = (typeof MODALITIES)[number];
+/** Modalities currently open to the public, in display order. Suporte is paused. */
+export const OPEN_MODALITIES: readonly Modality[] = ["expansao", "investidor"];
 
 export const STATUSES = ["nova", "em_analise", "em_negociacao", "aprovada", "recusada"] as const;
 export type Status = (typeof STATUSES)[number];

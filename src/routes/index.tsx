@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Lock, ShieldCheck } from "lucide-react";
-import { MODALITIES, type Modality } from "@/lib/applications";
+import { OPEN_MODALITIES, type Modality } from "@/lib/applications";
 import { MODALITY_CONTENT } from "@/components/apply/content";
 import { OpportunityCard } from "@/components/apply/OpportunityCard";
 import { ApplicationWizard } from "@/components/apply/ApplicationWizard";
@@ -11,9 +11,9 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Faça parte da Black Pay — Candidaturas oficiais" },
-      { name: "description", content: "Candidate-se para Suporte, Sócio Investidor ou Sócio de Expansão e participe do crescimento da Black Pay, gateway de pagamentos." },
+      { name: "description", content: "Candidate-se para Sócio de Expansão ou Sócio Investidor e participe do crescimento da Black Pay, gateway de pagamentos." },
       { property: "og:title", content: "Faça parte da Black Pay" },
-      { property: "og:description", content: "Portal oficial de candidaturas: Suporte, Sócio Investidor e Sócio de Expansão." },
+      { property: "og:description", content: "Portal oficial de candidaturas: Sócio de Expansão e Sócio Investidor." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -66,8 +66,8 @@ function Index() {
 
             <section aria-labelledby="oportunidades">
               <h2 id="oportunidades" className="sr-only">Oportunidades</h2>
-              <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
-                {MODALITIES.map((m, i) => (
+              <div className="mx-auto grid max-w-4xl grid-cols-1 gap-5 md:grid-cols-2">
+                {OPEN_MODALITIES.map((m, i) => (
                   <OpportunityCard key={m} index={i} content={MODALITY_CONTENT[m]} onSelect={() => start(m)} />
                 ))}
               </div>

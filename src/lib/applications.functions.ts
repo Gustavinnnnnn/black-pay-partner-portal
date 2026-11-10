@@ -1,7 +1,7 @@
 import { createServerFn } from "@tanstack/react-start";
 import { createClient } from "@supabase/supabase-js";
 import type { Database } from "@/integrations/supabase/types";
-import { QUESTIONS, submissionSchema, validateAnswers } from "./applications";
+import { OPEN_MODALITIES, QUESTIONS, submissionSchema, validateAnswers } from "./applications";
 
 /**
  * Public endpoint: visitors submit an application. Input is re-validated here;
@@ -10,6 +10,7 @@ import { QUESTIONS, submissionSchema, validateAnswers } from "./applications";
 export const submitApplication = createServerFn({ method: "POST" })
   .inputValidator((input: unknown) => submissionSchema.parse(input))
   .handler(async ({ data }) => {
+    if (!OPEN_MODALITIES.includes(data.modality)) throw new Error("Esta modalidade não está aberta no momento.");
     const errors = validateAnswers(data.modality, data.answers);
     if (Object.keys(errors).length) throw new Error("Respostas inválidas. Revise o formulário.");
 
