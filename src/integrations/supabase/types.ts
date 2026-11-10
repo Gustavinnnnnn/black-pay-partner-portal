@@ -14,16 +14,121 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      application_events: {
+        Row: {
+          action: string
+          actor_id: string | null
+          application_id: string
+          created_at: string
+          from_value: string | null
+          id: string
+          to_value: string | null
+        }
+        Insert: {
+          action: string
+          actor_id?: string | null
+          application_id: string
+          created_at?: string
+          from_value?: string | null
+          id?: string
+          to_value?: string | null
+        }
+        Update: {
+          action?: string
+          actor_id?: string | null
+          application_id?: string
+          created_at?: string
+          from_value?: string | null
+          id?: string
+          to_value?: string | null
+        }
+        Relationships: []
+      }
+      applications: {
+        Row: {
+          admin_notes: string | null
+          age: number
+          answers: Json
+          city_state: string
+          consent: boolean
+          created_at: string
+          full_name: string
+          id: string
+          instagram: string | null
+          modality: string
+          status: string
+          updated_at: string
+          whatsapp: string
+        }
+        Insert: {
+          admin_notes?: string | null
+          age: number
+          answers?: Json
+          city_state: string
+          consent: boolean
+          created_at?: string
+          full_name: string
+          id?: string
+          instagram?: string | null
+          modality: string
+          status?: string
+          updated_at?: string
+          whatsapp: string
+        }
+        Update: {
+          admin_notes?: string | null
+          age?: number
+          answers?: Json
+          city_state?: string
+          consent?: boolean
+          created_at?: string
+          full_name?: string
+          id?: string
+          instagram?: string | null
+          modality?: string
+          status?: string
+          updated_at?: string
+          whatsapp?: string
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          created_at: string
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      claim_first_admin: { Args: never; Returns: boolean }
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "user"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +255,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "user"],
+    },
   },
 } as const
