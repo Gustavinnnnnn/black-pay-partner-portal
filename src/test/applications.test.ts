@@ -16,7 +16,7 @@ describe("application rules", () => {
     expect(personalSchema.safeParse({ ...personal, age: "17" }).success).toBe(false);
   });
   it("investor must acknowledge risk", () => {
-    const base = { valor: "R$ 10.000", experiencia: "Sim", objetivo: "Participar do crescimento" };
+    const base = { valor: "R$ 10.000 a R$ 20.000", experiencia: "Sim", objetivo: "Participar do crescimento" };
     expect(validateAnswers("investidor", { ...base, ciente_riscos: "Não" })["ciente_riscos"]).toBeDefined();
     expect(validateAnswers("investidor", { ...base, ciente_riscos: "Sim, estou ciente dos riscos" })).toEqual({});
   });
