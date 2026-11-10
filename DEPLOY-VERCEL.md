@@ -39,7 +39,7 @@ login dá "Unsupported provider".
 
 - `/` carrega com os dois cards (Expansão e Investidor).
 - Enviar uma candidatura mostra **"CANDIDATURA RECEBIDA!"** e o registro aparece no painel.
-- `/admin` abre com contadores, tabela, busca, filtros,_csv_ e o botão **Chamar**.
+- `/admin` abre com contadores, tabela, busca, filtros, exportação CSV e o botão **Chamar**.
 
 ## Se aparecer erro no build
 
