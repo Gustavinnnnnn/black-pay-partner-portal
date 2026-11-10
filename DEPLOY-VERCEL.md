@@ -37,7 +37,7 @@ login dá "Unsupported provider".
 
 ## 5. Conferir se deu certo
 
-- `/` carrega com os dois cards (Expansão e Suporte).
+- `/` carrega com os dois cards (Gerente e Suporte).
 - Enviar uma candidatura mostra **"CANDIDATURA RECEBIDA!"** e o registro aparece no painel.
 - `/admin` abre com contadores, tabela, busca, filtros, exportação CSV e o botão **Chamar**.
 
