@@ -12,7 +12,7 @@ import { downloadCsv, toCsv } from "@/lib/csv";
 import { StatsGrid } from "@/components/admin/StatsGrid";
 import { StatusBadge } from "@/components/admin/StatusBadge";
 import { ApplicationDetail } from "@/components/admin/ApplicationDetail";
-import { formatDate, formatPhone, type ApplicationRow } from "@/components/admin/types";
+import { formatDate, formatPhone, whatsappLink, type ApplicationRow } from "@/components/admin/types";
 
 export const Route = createFileRoute("/_authenticated/admin")({
   head: () => ({
