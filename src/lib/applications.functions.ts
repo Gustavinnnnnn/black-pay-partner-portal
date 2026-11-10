@@ -1,7 +1,7 @@
 import { createServerFn } from "@tanstack/react-start";
 import { createClient } from "@supabase/supabase-js";
 import type { Database } from "@/integrations/supabase/types";
-import { QUESTIONS, submissionSchema, validateAnswers } from "./applications";
+import { OPEN_MODALITIES, QUESTIONS, submissionSchema, validateAnswers } from "./applications";
 
 /**
  * Public endpoint: visitors submit an application. Input is re-validated here;
