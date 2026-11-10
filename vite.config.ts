@@ -18,5 +18,5 @@ export default defineConfig({
   // On Vercel (VERCEL is set during their build) pin Nitro's Vercel preset so the
   // build emits .vercel/output instead of the Cloudflare default. Inside Lovable
   // the sandbox forces cloudflare-module, so publishing is unaffected.
-  ...(process.env.VERCEL ? { nitro: { preset: "vercel" } } : {}),
+  ...(process.env["VERCEL"] ? { nitro: { preset: "vercel" } } : {}),
 });
