@@ -98,8 +98,9 @@ export function maskWhatsapp(value: string): string {
 export const personalSchema = z.object({
   full_name: z.string().trim().min(3, "Informe seu nome completo").max(120, "Máximo de 120 caracteres")
     .refine((v) => v.split(/\s+/).length >= 2, "Informe nome e sobrenome"),
-  age: z.coerce.number({ invalid_type_error: "Informe sua idade" }).int("Idade inválida")
-    .min(18, "É necessário ter 18 anos ou mais").max(100, "Idade inválida"),
+  age: z.preprocess((v) => (v === "" || v == null ? undefined : v),
+    z.coerce.number({ required_error: "Informe sua idade", invalid_type_error: "Informe sua idade" }).int("Idade inválida")
+    .min(18, "É necessário ter 18 anos ou mais").max(100, "Idade inválida")),
   city_state: z.string().trim().min(3, "Informe cidade e estado").max(120, "Máximo de 120 caracteres"),
   whatsapp: z.string().transform(onlyDigits)
     .refine((v) => v.length === 10 || v.length === 11, "WhatsApp inválido. Use DDD + número"),
