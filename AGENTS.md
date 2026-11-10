@@ -28,3 +28,9 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project rules
+- Public application submissions go through `submitApplication` (createServerFn) with zod re-validation and the publishable key; RLS allows anon INSERT only, never SELECT. Why: visitors must never read candidate data.
+- Admin access is `user_roles` + `has_role`; the first signed-in account claims admin via `claim_first_admin()` only while no admin exists. Why: bootstrap without hardcoded credentials.
+- Status/notes/delete audit log is written by DB triggers into `application_events`. Why: logging cannot be bypassed by the client.
+- Question definitions live in `src/lib/applications.ts`, shared by client form, server validation and admin view.
