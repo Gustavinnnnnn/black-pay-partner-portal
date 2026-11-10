@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { Lock, ShieldCheck, Sparkles } from "lucide-react";
+import { Lock, ShieldCheck } from "lucide-react";
 import { MODALITIES, type Modality } from "@/lib/applications";
 import { MODALITY_CONTENT } from "@/components/apply/content";
 import { OpportunityCard } from "@/components/apply/OpportunityCard";
@@ -50,7 +50,7 @@ function Index() {
           <>
             <section className="step-enter mx-auto max-w-3xl pt-10 pb-14 text-center md:pt-20">
               <span className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-accent/50 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-primary">
-                <Sparkles className="size-3.5" aria-hidden="true" /> Processo seletivo aberto
+                <span className="size-1.5 rounded-full bg-primary" aria-hidden="true" /> Processo seletivo aberto
               </span>
               <h1 className="mt-6 text-4xl font-extrabold uppercase leading-[1.05] md:text-6xl">
                 Faça parte da <span className="text-primary">Black Pay</span>

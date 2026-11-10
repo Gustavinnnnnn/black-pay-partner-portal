@@ -11,7 +11,6 @@ export interface OpportunityCardProps {
 }
 
 export function OpportunityCard({ content, selected, onSelect, index }: OpportunityCardProps) {
-  const Icon = content.icon;
   return (
     <article
       className={cn(
@@ -20,13 +19,11 @@ export function OpportunityCard({ content, selected, onSelect, index }: Opportun
       )}
       style={{ animationDelay: `${index * 90}ms` }}
     >
-      <div className="flex items-start justify-between">
-        <span className="flex size-12 items-center justify-center rounded-xl border border-primary/30 bg-accent text-primary">
-          <Icon className="size-6" aria-hidden="true" />
-        </span>
-        <span className="font-display text-sm font-semibold text-muted-foreground">{content.number}</span>
+      <div className="flex items-center gap-3">
+        <span className="font-display text-4xl font-extrabold text-primary">{content.number}</span>
+        <span className="h-px flex-1 bg-border" aria-hidden="true" />
       </div>
-      <h3 className="mt-6 text-xl font-bold text-foreground">{content.title}</h3>
+      <h3 className="mt-5 text-xl font-bold text-foreground">{content.title}</h3>
       <p className="mt-1 text-sm font-semibold uppercase tracking-wider text-primary">{content.tag}</p>
       <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{content.summary}</p>
       <p className="mt-3 text-sm leading-relaxed text-foreground/80">{content.detail}</p>
